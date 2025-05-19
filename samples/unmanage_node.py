@@ -1,6 +1,6 @@
 import requests
 from orionsdk import SwisClient
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
         nodeId = results['results'][0]['NodeID']
         caption = results['results'][0]['Caption']
         netObjectId = 'N:{}'.format(nodeId)
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         tomorrow = now + timedelta(days=1)
         swis.invoke('Orion.Nodes', 'Unmanage', netObjectId, now, tomorrow, False)
         print('Done...{} will be unmanaged until {}'.format(caption, tomorrow))
