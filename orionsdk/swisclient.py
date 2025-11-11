@@ -11,7 +11,7 @@ def _json_serial(obj):
 
 
 class SwisClient:
-    def __init__(self, hostname, username, password, port=17774, timeout=10, verify=False, session=None):
+    def __init__(self, hostname, username, password, port=17774, timeout=30, verify=False, session=None):
         self.url = "https://{}:{}/SolarWinds/InformationService/v3/Json/".\
                 format(hostname, port)
         self._session = session or requests.Session()
@@ -55,7 +55,7 @@ class SwisClient:
     def _req(self, method, frag, data=None):
         resp = self._session.request(method, 
                                      self.url + frag,
-                                     timeout = self._timeout
+                                     timeout = self._timeout,
                                      data=json.dumps(data, default=_json_serial))
 
         # try to extract reason from response when request returns error
