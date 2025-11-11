@@ -13,7 +13,6 @@ setup(
     name="orionsdk",
     version="0.4.0",  # Update also in __init__ ;
     description="Python API for the SolarWinds Orion SDK",
-    long_description="Python client for interacting with the SolarWinds Orion API",
     author="SolarWinds",
     author_email="dan.jagnow@solarwinds.com",
     url='http://github.com/solarwinds/orionsdk-python',
