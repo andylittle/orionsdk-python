@@ -45,13 +45,12 @@ swis.query("SELECT NodeID from Orion.Nodes")
 
 ## Setting Timeout
 
+By default, requests timeout after 30 seconds. You can customize this by passing the `timeout` parameter (in seconds) to `SwisClient`:
+
 ```python
 import orionsdk
-import requests
 
-session = requests.Session()
-session.timeout = 30 # Set your timeout in seconds
-swis = orionsdk.SwisClient("SolarWinds-Orion", "username", "password", verify="server.pem", session=session)
+swis = orionsdk.SwisClient("SolarWinds-Orion", "username", "password", timeout=30, verify="server.pem")
 swis.query("SELECT NodeID from Orion.Nodes")
 ```
 
